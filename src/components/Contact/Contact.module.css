@@ -1,0 +1,88 @@
+.contactInfo > p{
+    font-size: 14pt;
+}
+
+.contactBtn{
+    display: grid;
+    place-items: center;
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    transition: background-color .2s linear;
+}
+
+.contactBtn:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.contactBtn svg{
+    width: 26px;
+    height: 26px;
+    color: #fff;
+}
+
+.openModalBtn{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    height: 20px;
+    width: 30px;
+    border: none;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #fff;
+}
+
+.modal{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    background-color: #8725e4;
+    padding: 24px 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+    transition: transform .2s linear;
+}
+
+.modal.active{
+    pointer-events: all;
+    transform: translateY(0%);
+}
+
+.modal button{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    transition: background-color .2s linear;
+    padding: 0;
+}
+
+.closeModalBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    height: 22px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0 0 0 50%;
+    color: #fff;
+    transition: background-color .2s linear;
+}
+
+.modal button:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.modal button:not(.closeModalBtn){
+    min-height: 30px;
+}

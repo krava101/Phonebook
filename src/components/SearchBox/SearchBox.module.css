@@ -1,0 +1,21 @@
+.searchBox{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+}
+
+.search{
+    max-width: 200px;
+    width: clamp(160px, 30vw, 200px);
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    padding:  5px 20px;
+    outline: none;
+    color: var(--main-color);
+}
+
+.search::placeholder{
+    text-align: center;
+    color: var(--main-color);
+}

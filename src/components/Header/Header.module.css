@@ -1,0 +1,16 @@
+.header{
+    display: grid;
+    place-items: center;
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+.header > div{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header h1{
+    font-size: clamp(16pt, 4vw, 26pt);
+}
