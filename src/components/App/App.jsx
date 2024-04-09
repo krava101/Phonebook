@@ -43,7 +43,7 @@ const App = () => {
             <Route
               path='/registration'
                 element={<RestrictedRoute component={<RegistPage />} redirectTo="/contacts" />} />
-              <Route path='*' element={<NotFoundPage/>} />
+            <Route path='*' element={<NotFoundPage/>} />
           </Routes>
         </Suspense>}
         <LogoutModal/>
