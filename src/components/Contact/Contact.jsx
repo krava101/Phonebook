@@ -1,25 +1,31 @@
-import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import css from './Contact.module.css';
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { IoIosClose } from "react-icons/io";
 import { FaPhone } from "react-icons/fa6";
-import { deleteContact, toggleToFavContact } from '../../redux/contactsOps.js';
 import clsx from 'clsx';
+import RenameModal from '../RenameModal/RenameModal.jsx';
+import DeleteModal from '../DeleteModal/DeleteModal.jsx';
 
 
 function Contact({ contact }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRenameModalOpen, setIsRenameModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const modal = clsx(css.modal, isModalOpen && css.active)
-  const dispatch = useDispatch();
-  const handleDelete = () => {
-    dispatch(deleteContact(contact.id))
-  };
-  const handleFavorite = () => {
-    const contactId = contact.id;
-    const favorite = !contact.favorite;
-    dispatch(toggleToFavContact({contactId, favorite}))
-  };
+
+  const handleOpenRenameModal = () => {
+    setIsRenameModalOpen(true);
+    setIsModalOpen(false);
+  }
+
+  const handleCloseRenameModal = () => {
+    setIsRenameModalOpen(false);
+  }
+
+  const handleCloseDeleteModal = () => {
+    setIsDeleteModalOpen(false);
+  }
 
   return (
     <>
@@ -30,11 +36,13 @@ function Contact({ contact }) {
       <a className={css.contactBtn} href={'tel:' + contact.number}><FaPhone/></a>
       <button className={css.openModalBtn} type='button' onClick={()=>setIsModalOpen(true)}><HiOutlineDotsHorizontal/></button>
       
-        <div className={modal} onClick={() => setIsModalOpen(false)}>
-          <button type='button' className={css.closeModalBtn}><IoIosClose/></button>
-          <button type='button' onClick={handleDelete}>Delete contact</button>
-          <button type='button' onClick={handleFavorite}>{contact.favorite ? 'Remove favorite' : 'Add to favorite'}</button>
-        </div>
+      <div className={modal}>
+        <button type='button' className={css.closeModalBtn} onClick={()=>setIsModalOpen(false)}><IoIosClose/></button>
+        <button type='button' onClick={() => setIsDeleteModalOpen(true)}>Delete contact</button>
+        <button type='button' onClick={handleOpenRenameModal}>Rename</button>
+        {isDeleteModalOpen && <DeleteModal contact={contact} handleClose={handleCloseDeleteModal}/>}
+      </div>
+      {isRenameModalOpen && <RenameModal contact={contact} handleClose={handleCloseRenameModal}/>}
     </>
   )
 }

@@ -1,38 +1,51 @@
-import css from './App.module.css';
-import ContactList from "../ContactList/ContactList";
-import ContactForm from "../ContactForm/ContactForm";
 import Header from '../Header/Header';
-import Filter from '../Filter/Filter';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchContacts } from '../../redux/contactsOps.js';
-import { selectError, selectIsLoading } from '../../redux/selectors';
+import { Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector} from 'react-redux';
+import { lazy, Suspense, useEffect } from "react";
+import Layout from '../Layout/Layout.jsx';
+import { refreshUser } from '../../redux/auth/operations.js';
+import { selectIsRefreshing } from '../../redux/auth/selectors.js';
+import { RestrictedRoute } from './RestrictedRoute.jsx';
+import { PrivateRoute } from './PrivateRoute.jsx';
+import Modal from 'react-modal';
 
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const ContactsPage = lazy(() => import('../../pages/ContactsPage/ContactsPage'));
+const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
+const RegistPage = lazy(() => import('../../pages/RegistPage/RegistPage'));
+import css from './App.module.css';
+import LogoutModal from '../LogoutModal/LogoutModal.jsx';
+
+Modal.setAppElement('#root');
 
 const App = () => {
-
+  const isRefreshing = useSelector(selectIsRefreshing)
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (
     <>
-      <Header/>
-      <main className={css.wrapper}>
-        <div>
-          {error && <p className={css.error}>{error}</p>}
-          {isLoading && <p className={css.loader}>Loading contacts...</p>}
-          <ContactList />
-        </div>
-        <div>
-          <Filter/>
-          <ContactForm />
-        </div>
-      </main>
+      <Header />
+      <Layout>
+        {isRefreshing ? <p className={css.refresh}>Refreshing user, please wait...</p> :
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route
+              path='/contacts'
+              element={<PrivateRoute component={<ContactsPage/>} redirectTo='/login'/>} />
+            <Route
+              path='/login'
+              element={<RestrictedRoute component={<LoginPage/>} redirectTo='/contacts'/>}/>
+            <Route
+              path='/registration'
+              element={<RestrictedRoute component={<RegistPage />} redirectTo="/contacts"/>}/>
+          </Routes>
+        </Suspense>}
+        <LogoutModal/>
+      </Layout>
     </>
   )
 }

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addContact, deleteContact, fetchContacts, toggleToFavContact } from "./contactsOps";
+import { addContact, deleteContact, fetchContacts, renameContact} from "./operations";
+import { logOut } from "../auth/operations";
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -40,18 +41,18 @@ const contactsSlice = createSlice({
         state.items = state.items.filter(e => e.id !== action.payload.id);
       })
       .addCase(deleteContact.rejected, handleRejected)
-      .addCase(toggleToFavContact.pending, handlePending)
-      .addCase(toggleToFavContact.fulfilled, (state, action) => {
+      .addCase(renameContact.pending, handlePending)
+      .addCase(renameContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        for (const contact of state.items) {
-          if (contact.id === action.payload.id) {
-            contact.favorite = !contact.favorite;
-            break;
-          }
-        }
+        state.items = state.items.map(e => e.id === action.payload.id ? e = action.payload : e)
       })
-      .addCase(toggleToFavContact.rejected, handleRejected)
+      .addCase(renameContact.rejected, handleRejected)
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = [];
+        state.error = null;
+        state.isLoading = false;
+      });
   }
 });
 

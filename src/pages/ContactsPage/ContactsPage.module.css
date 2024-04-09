@@ -1,0 +1,20 @@
+.error {
+    color: red;
+}
+
+.loader {
+    color: var(--main-color);
+}
+
+.contactsWrapper{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media screen and (max-width: 675px) {
+    .contactsWrapper {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}

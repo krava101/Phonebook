@@ -3,6 +3,8 @@
   line-height: 1.5;
   font-weight: 400;
   --main-color: #a03aff;
+  --modal-color: #8725e4;
+  --hover-color: #ffffff33;
 }
 
 section {
@@ -38,4 +40,10 @@ img {
 
 button{
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+section{
+  padding: 0;
 }

@@ -1,7 +1,9 @@
 .contactList{
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    justify-content: start;
+    gap: 10px 10px;
+    min-width: 640px;
 }
 
 .contactList li{
@@ -24,5 +26,6 @@
 @media screen and (max-width: 1000px) {
     .contactList{
         justify-content: center;
+        min-width: 0px;
     }
 }

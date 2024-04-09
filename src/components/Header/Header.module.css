@@ -1,4 +1,5 @@
 .header{
+    position: relative;
     display: grid;
     place-items: center;
     background-color: var(--main-color);
@@ -11,6 +12,168 @@
     gap: 20px;
 }
 
-.header h1{
+.headerTitle{
     font-size: clamp(16pt, 4vw, 26pt);
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 40px;
+}
+
+.headerNav{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navLink {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16pt;
+}
+
+.headerUser{
+    display: flex;
+    gap: 5px;
+    margin-left: 40px;
+}
+
+.exit{
+    display: grid;
+    place-items: center;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 24px;
+}
+
+.loginNav, .loginMobileNav{
+    display: flex;
+    gap: 10px;
+}
+
+.loginNav a, .loginMobileNav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14pt;
+}
+
+.headerMobileUser{
+    display: none;
+}
+
+.burger{
+    display: none;
+}
+
+.closeMobileMenu{
+    display: none;
+}
+
+.loginMobileNav{
+    display: none;
+}
+
+@media screen and (max-width: 675px){
+    .header{
+        height: 40px;
+    }
+
+    .closeMobileMenu{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+        color: #fff;
+    }
+
+    .burger {
+        display: grid;
+        place-items: center;
+        padding: 0;
+        font-size: 20px;
+        color: #fff;
+    }
+
+    .navMenu{
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-100%);
+        display: flex;
+        flex-direction: column;
+        padding: 40px 20px 20px;
+        min-height: 100vh;
+        min-width: 100vw;
+        background-color: var(--main-color);
+        z-index: 99;
+        transition: transform .3s linear;
+    }
+
+    .navMenu.active{
+        transform: translateY(0);
+    }
+
+    .headerNav{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: start;
+        gap: 0;
+    }
+
+    .navLink{
+        font-size: 24pt;
+        width: 100%;
+    }
+
+    .headerMobileUser {
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    .username {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 16pt;
+    }
+
+    .username > svg {
+        font-size: 20px;
+    }
+
+    .exit{
+        display: flex;
+        gap: 4px;
+        padding: 0;
+        font-size: 16pt
+    }
+
+    .headerUser{
+        display: none;
+    }
+
+    .headerTitle{
+        margin-right: 0;
+    }
+
+    .loginNav{
+        display: none;
+    }
+
+    .loginMobileNav{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .loginMobileNav{}
 }

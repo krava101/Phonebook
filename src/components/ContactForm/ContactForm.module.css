@@ -8,9 +8,10 @@
     padding: 12px;
     background-color: var(--main-color);
     color: #fff;
+    overflow: hidden;
 }
 
-.form > p{
+.fromTitle{
     font-size: 16pt;
     font-weight: 600;
     text-align: center;
@@ -25,6 +26,7 @@
     outline: none;
     margin: 10px 0 5px;
     color: var(--main-color);
+    -webkit-text-fill-color: var(--main-color);
 }
 
 .form input::placeholder{
@@ -36,9 +38,9 @@
     margin-top: 4px;
 }
 
-.form button{
+.submitBtn{
     align-self: center;
-    height: 40px;
+    min-height: 40px;
     width: 150px;
     border: 1px solid #fff;
     border-radius: 8px;
@@ -48,6 +50,66 @@
     transition: background-color .2s linear;
 }
 
-.form button:hover{
+.submitBtn:hover, .submitBtn:focus{
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+.fromMobileTitle{
+    display: none;
+}
+
+@media screen and (max-width: 675px) {
+    .form{
+        max-height: 54px;
+    }
+    
+    .form.disable{
+        animation: form .5s linear;
+    }
+
+    .form.active{
+        animation: formActive .5s linear;
+        max-height: 280px;
+    }
+
+    @keyframes formActive {
+        0%{
+            max-height: 54px;
+        }100%{
+            max-height: 280px;
+        }
+    }
+
+    @keyframes form {
+        0% {
+            max-height: 280px;
+        }100% {
+            max-height: 54px;
+        }
+    }
+
+    .fromMobileTitle{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 32px;
+        border: none;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 16pt;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .fromMobileTitle svg{
+        width: 20px;
+        height: 20px;
+        border: .07em solid #fff;
+        border-radius: 3px;
+    }
+
+    .fromTitle{
+        display: none;
+    }
 }

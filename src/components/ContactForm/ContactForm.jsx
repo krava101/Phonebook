@@ -1,9 +1,12 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useId } from 'react';
-import css from './ContactForm.module.css';
+import { useEffect, useId, useState } from 'react';
 import * as Yup from "yup";
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsOps.js';
+import { addContact } from '../../redux/contacts/operations';
+import SearchBox from '../SearchBox/SearchBox';
+import { IoMdAdd } from "react-icons/io";
+import css from './ContactForm.module.css';
+import clsx from 'clsx';
 
 const initialValues = {
   username: '',
@@ -11,11 +14,18 @@ const initialValues = {
 }
 
 const ValidationSchema = Yup.object().shape({
-  username: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('This is required!'),
-  phone: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('This is required!')
+  username: Yup.string().min(3, 'Too short!').max(16, 'Too long! Only 16 symbols!').required('This is required!'),
+  phone: Yup.string().min(3, 'Too short!').max(20, 'Too long!').required('This is required!')
 });
 
 function ContactForm() {
+  const [isMobileFromActive, setIsMobileFromActive] = useState(false);
+  const [active, setActive] = useState(false);
+  useEffect(() => {
+    isMobileFromActive ? setActive(true) : null;
+  }, [isMobileFromActive]);
+
+  const form = clsx(css.form, active && (isMobileFromActive ? css.active : css.disable));
   const nameId = useId();
   const telId = useId();
   const dispatch = useDispatch();
@@ -29,17 +39,25 @@ function ContactForm() {
 		actions.resetForm();
   }
 
+  const handleToggleMobileForm = () => {
+    setIsMobileFromActive(!isMobileFromActive);
+  }
+
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={ValidationSchema}>
-      <Form className={css.form}>
-        <p>Add new contact</p>
+    <div>
+      <SearchBox/>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={ValidationSchema}>
+      <Form className={form}>
+        <button className={css.fromMobileTitle} onClick={handleToggleMobileForm} type='button'>Add new contact <IoMdAdd /></button>
+        <p className={css.fromTitle}>Add new contact</p>
         <Field type="text" name="username" id={nameId} placeholder='Name'/>
         <span className={css.error}><ErrorMessage name="username" as="span" /></span>
         <Field type="tel" name="phone" id={telId} placeholder='Phone'/>
         <span className={css.error}><ErrorMessage name="phone" as="span" /></span>
-        <button type="submit">Add contact</button>
+        <button className={css.submitBtn} type="submit">Add contact</button>
       </Form>
-    </Formik>
+      </Formik>
+    </div>
   )
 }
 

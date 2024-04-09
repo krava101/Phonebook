@@ -2,6 +2,13 @@
     font-size: 14pt;
 }
 
+.contactInfo{
+    height: 62px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
 .contactBtn{
     display: grid;
     place-items: center;
@@ -10,6 +17,8 @@
     background-color: transparent;
     border: none;
     border-radius: 6px;
+    font-size: 26px;
+    color: #fff;
     transition: background-color .2s linear;
 }
 
@@ -17,23 +26,23 @@
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.contactBtn svg{
-    width: 26px;
-    height: 26px;
-    color: #fff;
-}
-
 .openModalBtn{
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 0;
+    right: 0;
     height: 20px;
     width: 30px;
     border: none;
-    border-radius: 6px;
+    border-radius: 0 0 0 10px;
     background-color: transparent;
     color: #fff;
+    transition: background-color .2s linear;
 }
+
+.openModalBtn:hover, .openModalBtn:hover:focus{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 
 .modal{
     position: absolute;
@@ -43,7 +52,7 @@
     width: 150px;
     display: flex;
     flex-direction: column;
-    background-color: #8725e4;
+    background-color: var(--modal-color);
     padding: 24px 0;
     pointer-events: none;
     transform: translateY(-100%);

@@ -1,0 +1,74 @@
+.modal{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 300px;
+    height: 200px;
+    color: #fff;
+}
+
+.modal p {
+    font-size: 18pt;
+}
+
+p.username{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 16pt;
+}
+
+.closeModalBtn{
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    display: grid;
+    place-items:  center;
+    border: none;
+    padding: 0;
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-size: 30px;
+    background-color: transparent;
+    transition: background-color .2s linear;
+}
+
+.closeModalBtn:hover, .closeModalBtn:focus{
+    background-color: var(--hover-color);
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.controlsBtn{
+    padding: 4px 14px;
+    border-radius: 6px;
+    font-size: 16pt;
+    color: inherit;
+    transition: background-color .2s linear;
+}
+
+.controlsBtn:hover, .controlsBtn:focus{
+    background-color: var(--hover-color);
+}
+
+@media screen and (max-width: 675px) {
+    .modal p{
+        font-size: 16pt;
+    }
+
+    p.username{
+        font-size: 14pt;
+    }
+
+    .controlsBtn{
+        font-size: 14pt;
+    }
+}

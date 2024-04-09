@@ -1,24 +1,3 @@
-.wrapper{
-    display: flex;
-    justify-content: end;
-    gap: 20px;
-    padding: 20px;
-    max-width: 1000px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.error{
-    color: red;
-}
-
-.loader{
+.refresh{
     color: var(--main-color);
-}
-
-@media screen and (max-width: 675px) {
-    .wrapper{
-        flex-direction: column-reverse;
-        align-items: center;
-    }
 }

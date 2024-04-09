@@ -1,0 +1,46 @@
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useDispatch } from 'react-redux';
+import { useId } from "react";
+import * as Yup from "yup";
+import css from './LoginPage.module.css';
+import { logIn } from '../../redux/auth/operations';
+import { NavLink } from 'react-router-dom';
+
+const initialValues = {
+  email: '',
+  password: ''
+}
+
+const ValidationSchema = Yup.object().shape({
+  email: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('This is required!'),
+  password: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('This is required!')
+});
+
+export default function LoginPage() {
+  const disptach = useDispatch()
+  const emailId = useId();
+  const pasId = useId();
+
+  const handleSubmit = (values, actions) => {
+    disptach(logIn(values))
+    actions.resetForm();
+  }
+
+  return (
+    <>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={ValidationSchema}>
+        <Form className={css.form}>
+          <p>Log in</p>
+          <Field type="email" name="email" id={emailId} placeholder='Email'/>
+          <span className={css.error}><ErrorMessage name="email" as="span" /></span>
+          <Field type="password" name="password" id={pasId} placeholder='Password'/>
+          <span className={css.error}><ErrorMessage name="password" as="span" /></span>
+          <button type="submit">Log in</button>
+          <p className={css.toReg}>Don&apos;t have an account yet?
+          <NavLink to='/registration'>Create a new one!</NavLink>
+          </p>
+        </Form>
+      </Formik>
+    </>
+  )
+}
