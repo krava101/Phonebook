@@ -4,7 +4,7 @@ import { useId } from "react";
 import * as Yup from "yup";
 import css from './LoginPage.module.css';
 import { logIn } from '../../redux/auth/operations';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const initialValues = {
   email: '',
@@ -37,7 +37,7 @@ export default function LoginPage() {
           <span className={css.error}><ErrorMessage name="password" as="span" /></span>
           <button type="submit">Log in</button>
           <p className={css.toReg}>Don&apos;t have an account yet?
-          <NavLink to='/registration'>Create a new one!</NavLink>
+          <Link to='/registration'>Create a new one!</Link>
           </p>
         </Form>
       </Formik>

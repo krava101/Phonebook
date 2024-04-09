@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdOutlineStart } from "react-icons/md";
 import css from './HomePage.module.css';
 
@@ -8,7 +8,7 @@ export default function HomePage() {
     <>
       <section className={css.hero}>
         <h1 className={css.title}>Welcome to Phonebook!</h1>
-        <p className={css.homeInfo}><NavLink to='/login'>Log in</NavLink> to your account or <NavLink to='/registration'>create a new one</NavLink> to start using our phonebook.</p>
+        <p className={css.homeInfo}><Link to='/login'>Log in</Link> to your account or <Link to='/registration'>create a new one</Link> to start using our phonebook.</p>
       </section>
       <section className={css.features}>
         <p className={css.featuresTitle}>Explore our main features</p>
@@ -34,7 +34,7 @@ export default function HomePage() {
             <p>- Log out of your account anytime to ensure the security of your data.</p>
           </li>
         </ul>
-        <NavLink to='/registration' className={css.start}>Get started <MdOutlineStart/></NavLink>
+        <Link to='/registration' className={css.start}>Get started <MdOutlineStart/></Link>
       </section>
     </>
   )

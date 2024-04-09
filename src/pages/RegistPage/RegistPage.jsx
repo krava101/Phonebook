@@ -4,7 +4,7 @@ import { useId } from "react";
 import * as Yup from "yup";
 import css from './RegistPage.module.css';
 import { signUp } from '../../redux/auth/operations';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const initialValues = {
   name: '',
@@ -53,7 +53,7 @@ export default function RegistPage() {
           <span className={css.error}><ErrorMessage name="confirmPass" as="span" /></span>
           <button type="submit">Sign up</button>
           <p className={css.toLog}>Do you already have an account? 
-          <NavLink to='/login'>Log in!</NavLink>
+          <Link to='/login'>Log in!</Link>
           </p>
         </Form>
       </Formik>

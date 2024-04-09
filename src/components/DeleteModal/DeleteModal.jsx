@@ -1,13 +1,11 @@
 import { deleteContact } from '../../redux/contacts/operations.js';
 import { useDispatch } from 'react-redux';
-import toast from "react-hot-toast";
 import css from './DeleteModal.module.css';
 
 export default function DeleteModal({ contact, handleClose }) {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(deleteContact(contact.id)).unwrap()
-      .then(() => toast.success(`Contact ${contact.name} deleted`));
+    dispatch(deleteContact(contact.id));
   };
 
   return (

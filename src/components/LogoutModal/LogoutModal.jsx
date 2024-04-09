@@ -6,8 +6,8 @@ import { useDispatch } from 'react-redux';
 import { modalToggle } from '../../redux/logoutModal/slice';
 import { IoIosClose } from "react-icons/io";
 import { IoPersonSharp } from "react-icons/io5";
-import css from './LogoutModal.module.css';
 import { selectUser } from '../../redux/auth/selectors';
+import css from './LogoutModal.module.css';
 
 const customStyles = {
   content: {
