@@ -7,7 +7,7 @@ import ContactList from '../../components/ContactList/ContactList';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import css from './Contacts.module.css';
 
-export default function ContactsPage() {
+export default function Contacts() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const isLoggedIn = useSelector(selectIsLoggedIn);

@@ -16,7 +16,7 @@ const ValidationSchema = Yup.object().shape({
   password: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('This is required!')
 });
 
-export default function Login() {
+export default function LoginForm() {
   const disptach = useDispatch()
   const emailId = useId();
   const pasId = useId();
