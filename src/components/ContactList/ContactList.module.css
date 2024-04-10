@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
-    gap: 10px 10px;
+    gap: 10px;
     min-width: 640px;
 }
 
@@ -12,9 +12,7 @@
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    max-width: 315px;
-    min-width: 300px;
-    width: 100%;
+    width: 315px;
     height: 100px;
     background-color: var(--main-color);
     border-radius: 8px;

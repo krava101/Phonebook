@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import css from './Contact.module.css';
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { IoIosClose } from "react-icons/io";
+import { useState } from 'react';
 import { FaPhone } from "react-icons/fa6";
-import clsx from 'clsx';
 import RenameModal from '../RenameModal/RenameModal.jsx';
 import DeleteModal from '../DeleteModal/DeleteModal.jsx';
+import clsx from 'clsx';
+import css from './Contact.module.css';
 
 
 function Contact({ contact }) {

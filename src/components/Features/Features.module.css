@@ -1,0 +1,62 @@
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    padding: 10px 0 20px;
+  font-size: 14pt;
+}
+
+.container {
+  width: 480px;
+  margin: 0 auto;
+}
+
+.features p:not(:last-child) {
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+.featuresTitle {
+  margin-bottom: 16px;
+  font-size: 20pt;
+  font-weight: 600;
+  color: var(--main-color);
+  text-align: center;
+}
+
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 480px;
+}
+
+.startAuthBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 130px;
+  height: 40px;
+  margin: 15px auto 0;
+  border: 1px solid var(--main-color);
+  border-radius: 10px;
+  color: var(--main-color);
+  text-decoration: none;
+  transition: background-color .2s linear, color .2s linear;
+}
+
+.startAuthBtn:hover,
+.startAuthBtn:focus {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+
+@media screen and (max-width: 675px) {
+  .container {
+    width: 320px;
+    padding: 0 10px;
+    margin: 0 auto;
+  }
+}

@@ -1,12 +1,12 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useEffect, useId, useState } from 'react';
-import * as Yup from "yup";
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
-import SearchBox from '../SearchBox/SearchBox';
 import { IoMdAdd } from "react-icons/io";
-import css from './ContactForm.module.css';
+import SearchBox from '../SearchBox/SearchBox';
+import * as Yup from "yup";
 import clsx from 'clsx';
+import css from './ContactForm.module.css';
 
 const initialValues = {
   username: '',

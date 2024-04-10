@@ -6,15 +6,23 @@
     color: var(--main-color);
 }
 
-.contactsWrapper{
+.contacts{
+    padding: 20px 0;
+}
+
+.container{
     display: flex;
     justify-content: center;
     gap: 20px;
+    max-width: 980px;
+    padding: 0 10px;
+    margin: 0 auto;
 }
 
 @media screen and (max-width: 675px) {
-    .contactsWrapper {
+    .container {
         flex-direction: column-reverse;
         align-items: center;
+        padding: 0 10px;
     }
 }

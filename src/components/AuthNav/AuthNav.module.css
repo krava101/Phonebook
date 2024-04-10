@@ -1,0 +1,32 @@
+.authNav, .authMobileNav {
+    display: flex;
+    gap: 10px;
+}
+
+.authLink {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16pt;
+}
+
+.authMobileNav{
+    display: none;
+}
+
+@media screen and (max-width: 675px) {
+    .authMobileNav{
+        display: flex;
+    }
+
+    .authNav{
+        display: none;
+    }
+
+    .authLink {
+        font-size: 20pt;
+        width: 100%;
+        text-align: center;
+    }
+
+}

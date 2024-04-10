@@ -1,0 +1,36 @@
+.hero{
+  padding: 20px 0 10px;
+}
+
+.container {
+  width: 480px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 26pt;
+  font-weight: 700;
+  color: var(--main-color);
+  text-align: center;
+}
+
+.authInfo {
+  max-width: 480px;
+  font-size: 16pt;
+}
+
+.authInfo a {
+  color: var(--main-color);
+}
+
+@media screen and (max-width: 675px) {
+  .authInfo {
+    text-align: center;
+  }
+
+  .container {
+    width: 320px;
+    padding: 0 10px;
+    margin: 0 auto;
+  }
+}

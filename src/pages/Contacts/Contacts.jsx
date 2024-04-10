@@ -1,11 +1,11 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectError, selectIsLoading } from "../../redux/contacts/selectors";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { fetchContacts } from "../../redux/contacts/operations";
 import ContactList from '../../components/ContactList/ContactList';
 import ContactForm from '../../components/ContactForm/ContactForm';
-import css from './ContactsPage.module.css';
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import { useEffect } from "react";
-import { fetchContacts } from "../../redux/contacts/operations";
+import css from './Contacts.module.css';
 
 export default function ContactsPage() {
   const isLoading = useSelector(selectIsLoading);
@@ -14,17 +14,19 @@ export default function ContactsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    isLoggedIn ? dispatch(fetchContacts()): null
+    if (isLoggedIn) dispatch(fetchContacts());
   }, [dispatch, isLoggedIn]);
 
   return (
-    <div className={css.contactsWrapper}>
-      <div>
-        {error && <p className={css.error}>{error}</p>}
-        {isLoading && <p className={css.loader}>Loading contacts...</p>}
-        <ContactList />
+    <section className={css.contacts}>
+      <div className={css.container}>
+        <div>
+          {error && <p className={css.error}>{error}</p>}
+          {isLoading && <p className={css.loader}>Loading contacts...</p>}
+          <ContactList />
+        </div>
+        <ContactForm />
       </div>
-      <ContactForm />
-    </div>
+    </section>
   )
 }

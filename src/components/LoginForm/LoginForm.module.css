@@ -1,10 +1,11 @@
 .form {
     display: flex;
     flex-direction: column;
-    min-width: 400px;
+    width: 400px;
     border: none;
     border-radius: 8px;
     padding: 12px;
+    margin: 40px auto 0;
     background-color: var(--main-color);
     color: #fff;
 }
@@ -52,7 +53,7 @@
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-p.toLog{
+p.toReg {
     display: flex;
     justify-content: center;
     gap: 5px;
@@ -60,12 +61,17 @@ p.toLog{
     font-size: 10pt;
 }
 
-.toLog a{
+.toReg a {
     color: #fff;
 }
 
 @media screen and (max-width: 675px) {
     .form {
-        min-width: 300px;
+        width: 300px;
+    }
+
+    p.toReg {
+        flex-wrap: wrap;
+        gap: 0;
     }
 }

@@ -1,0 +1,64 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerUser {
+  display: flex;
+  gap: 5px;
+  margin-left: 40px;
+}
+
+.logoutBtn {
+  display: grid;
+  place-items: center;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 24px;
+}
+
+.headerMobileUser {
+  display: none;
+}
+
+@media screen and (max-width: 675px) {
+  .userMenu {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: start;
+    gap: 0;
+  }
+
+  .navLink {
+    font-size: 20pt;
+  }
+
+  .headerMobileUser {
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  .username {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 16pt;
+  }
+
+  .username>svg {
+    font-size: 20px;
+  }
+
+  .logoutBtn {
+    display: flex;
+    gap: 4px;
+    padding: 0;
+    font-size: 16pt
+  }
+
+  .headerUser {
+    display: none;
+  }
+}

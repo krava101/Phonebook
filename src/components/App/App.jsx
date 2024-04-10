@@ -1,21 +1,21 @@
-import { Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector} from 'react-redux';
 import { lazy, Suspense, useEffect } from "react";
-import { refreshUser } from '../../redux/auth/operations.js';
+import { useDispatch, useSelector} from 'react-redux';
 import { selectIsRefreshing } from '../../redux/auth/selectors.js';
-import { RestrictedRoute } from './RestrictedRoute.jsx';
-import { PrivateRoute } from './PrivateRoute.jsx';
-import Header from '../Header/Header';
-import Layout from '../Layout/Layout.jsx';
+import { RestrictedRoute } from './RestrictedRoute';
+import { Routes, Route } from "react-router-dom";
+import { PrivateRoute } from './PrivateRoute';
+import { refreshUser } from '../../redux/auth/operations.js';
+import LogoutModal from '../LogoutModal/LogoutModal';
+import Layout from '../Layout/Layout';
+import AppBar from '../AppBar/AppBar';
 import Modal from 'react-modal';
-
-const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-const ContactsPage = lazy(() => import('../../pages/ContactsPage/ContactsPage'));
-const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
-const RegistPage = lazy(() => import('../../pages/RegistPage/RegistPage'));
-const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage'));
 import css from './App.module.css';
-import LogoutModal from '../LogoutModal/LogoutModal.jsx';
+
+const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage'));
+const Registration = lazy(() => import('../../pages/Registration/Registration'));
+const Contacts = lazy(() => import('../../pages/Contacts/Contacts'));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const Login = lazy(() => import('../../pages/Login/Login'));
 
 Modal.setAppElement('#root');
 
@@ -28,21 +28,21 @@ const App = () => {
 
   return (
     <>
-      <Header />
       <Layout>
+        <AppBar/>
         {isRefreshing ? <p className={css.refresh}>Refreshing user, please wait...</p> :
         <Suspense fallback={null}>
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route
               path='/contacts'
-              element={<PrivateRoute component={<ContactsPage/>} redirectTo='/'/>} />
+              element={<PrivateRoute component={<Contacts/>} redirectTo='/login'/>} />
             <Route
               path='/login'
-              element={<RestrictedRoute component={<LoginPage/>} redirectTo='/contacts'/>}/>
+              element={<RestrictedRoute component={<Login/>} redirectTo='/contacts'/>}/>
             <Route
               path='/registration'
-                element={<RestrictedRoute component={<RegistPage />} redirectTo="/contacts" />} />
+                element={<RestrictedRoute component={<Registration/>} redirectTo="/contacts" />} />
             <Route path='*' element={<NotFoundPage/>} />
           </Routes>
         </Suspense>}

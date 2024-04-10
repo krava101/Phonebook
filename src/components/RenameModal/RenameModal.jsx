@@ -1,9 +1,9 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { renameContact } from "../../redux/contacts/operations";
 import { useDispatch } from 'react-redux';
+import { IoMdClose } from "react-icons/io";
 import { useId } from "react";
 import * as Yup from "yup";
-import { renameContact } from "../../redux/contacts/operations";
-import { IoMdClose } from "react-icons/io";
 import css from './RenameModal.module.css';
 
 

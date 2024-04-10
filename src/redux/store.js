@@ -1,9 +1,10 @@
-import { configureStore} from "@reduxjs/toolkit";
-import { contactsReducer } from "./contacts/slice";
-import { filterReducer } from "./filters/slice";
-import { logoutModalReducer } from "./logoutModal/slice";
-import authReducer from "./auth/slice";
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, } from 'redux-persist';
+import { logoutModalReducer } from "./logoutModal/slice";
+import { mobileMenuReducer } from "./mobileMenu/slice";
+import { contactsReducer } from "./contacts/slice";
+import { configureStore} from "@reduxjs/toolkit";
+import { filterReducer } from "./filters/slice";
+import authReducer from "./auth/slice";
 import storage from 'redux-persist/lib/storage';
 
 const authPersistCfg = {
@@ -20,6 +21,7 @@ export const store = configureStore({
     contacts: contactsReducer,
     filter: filterReducer,
     logoutModal: logoutModalReducer,
+    mobileMenu: mobileMenuReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

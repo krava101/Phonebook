@@ -1,12 +1,12 @@
-import Modal from 'react-modal';
-import { useSelector } from "react-redux";
 import { selectIsLogoutModalOpen } from '../../redux/logoutModal/selectors';
-import { logOut } from '../../redux/auth/operations';
+import { IoPersonSharp } from "react-icons/io5";
+import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 import { modalToggle } from '../../redux/logoutModal/slice';
 import { IoIosClose } from "react-icons/io";
-import { IoPersonSharp } from "react-icons/io5";
 import { selectUser } from '../../redux/auth/selectors';
+import { logout } from '../../redux/auth/operations';
+import Modal from 'react-modal';
 import css from './LogoutModal.module.css';
 
 const customStyles = {
@@ -28,8 +28,8 @@ export default function LogoutModal() {
   const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
-  const handleLogOut = () => {
-    dispatch(logOut());
+  const handleLogout = () => {
+    dispatch(logout());
     dispatch(modalToggle());
   }
 
@@ -49,7 +49,7 @@ export default function LogoutModal() {
           <p>Do you want to log out of your account?</p>
           <p className={css.username}><IoPersonSharp />{user.name}</p>
           <div className={css.controls}>
-            <button className={css.controlsBtn} type='button' onClick={handleLogOut}>Log out</button>
+            <button className={css.controlsBtn} type='button' onClick={handleLogout}>Log out</button>
             <button className={css.controlsBtn} type='button' onClick={handleCloseModal}>Stay signed in</button>
           </div>
         </div>
