@@ -1,6 +1,6 @@
 import { mobileMenuToggle } from "../../redux/mobileMenu/slice";
 import { useDispatch } from 'react-redux';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import css from './AuthNav.module.css';
 
 
@@ -14,12 +14,12 @@ export default function AuthNav() {
   return (
     <>
       <div className={css.authNav}>
-        <Link className={css.authLink} to='/login'>Login</Link>
-        <Link className={css.authLink} to='/registration'>Registration</Link>
+        <NavLink className={css.authLink} to='/login'>Login</NavLink>
+        <NavLink className={css.authLink} to='/register'>Registration</NavLink>
       </div>
       <div className={css.authMobileNav}>
-        <Link className={css.authLink} onClick={handleToggleMobileMenu} to='/registration'>Registration</Link>
-        <Link className={css.authLink} onClick={handleToggleMobileMenu} to='/login'>Login</Link>
+        <NavLink className={css.authLink} onClick={handleToggleMobileMenu} to='/register'>Registration</NavLink>
+        <NavLink className={css.authLink} onClick={handleToggleMobileMenu} to='/login'>Login</NavLink>
       </div>
     </>
     )

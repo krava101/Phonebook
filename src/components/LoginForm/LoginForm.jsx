@@ -36,7 +36,7 @@ export default function Login() {
         <span className={css.error}><ErrorMessage name="password" as="span" /></span>
         <button type="submit">Log in</button>
         <p className={css.toReg}>Don&apos;t have an account yet?
-        <Link to='/registration'>Create a new one!</Link>
+        <Link to='/register'>Create a new one!</Link>
         </p>
       </Form>
     </Formik>

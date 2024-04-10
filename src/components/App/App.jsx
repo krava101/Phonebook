@@ -39,7 +39,7 @@ const App = () => {
               path='/login'
               element={<RestrictedRoute component={<Login/>} redirectTo='/contacts'/>}/>
             <Route
-              path='/registration'
+              path='/register'
                 element={<RestrictedRoute component={<Registration/>} redirectTo="/contacts" />} />
             <Route path='*' element={<NotFoundPage/>} />
           </Routes>

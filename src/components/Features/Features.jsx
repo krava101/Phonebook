@@ -30,7 +30,7 @@ export default function Features() {
             <p>- Log out of your account anytime to ensure the security of your data.</p>
           </li>
         </ul>
-        <Link to='/registration' className={css.startAuthBtn}>Get started <MdOutlineStart/></Link>
+        <Link to='/register' className={css.startAuthBtn}>Get started <MdOutlineStart/></Link>
       </div>
     </section>
   )
