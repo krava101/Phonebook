@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import UserMenu from '../UserMenu/UserMenu.jsx';
 import AuthNav from "../AuthNav/AuthNav.jsx";
 import clsx from 'clsx';
-import css from './AppBAr.module.css';
+import css from './AppBar.module.css';
 
 export default function Header() {
   const dispatch = useDispatch(mobileMenuToggle())
