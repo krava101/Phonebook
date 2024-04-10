@@ -13,8 +13,8 @@ import css from './App.module.css';
 const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage'));
 const Registration = lazy(() => import('../Registration/Registration'));
 const Contacts = lazy(() => import('../Contacts/Contacts'));
-const Home = lazy(() => import('../../pages/Home/Home.jsx'));
 const Login = lazy(() => import('../Login/Login'));
+const Home = lazy(() => import('../../pages/Home/Home'));
 
 Modal.setAppElement('#root');
 
