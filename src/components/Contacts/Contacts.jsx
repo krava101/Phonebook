@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectError, selectIsLoading } from "../../redux/contacts/selectors";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { fetchContacts } from "../../redux/contacts/operations";
-import ContactList from '../../components/ContactList/ContactList';
-import ContactForm from '../../components/ContactForm/ContactForm';
+import ContactList from '../ContactList/ContactList';
+import ContactForm from '../ContactForm/ContactForm';
 import css from './Contacts.module.css';
 
 export default function Contacts() {

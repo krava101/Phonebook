@@ -11,10 +11,10 @@ import Modal from 'react-modal';
 import css from './App.module.css';
 
 const NotFoundPage = lazy(() => import('../../pages/NotFoundPage/NotFoundPage'));
-const Registration = lazy(() => import('../../pages/Registration/Registration'));
-const Contacts = lazy(() => import('../../pages/Contacts/Contacts'));
-const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-const Login = lazy(() => import('../../pages/Login/Login'));
+const Registration = lazy(() => import('../Registration/Registration'));
+const Contacts = lazy(() => import('../Contacts/Contacts'));
+const Home = lazy(() => import('../../pages/Home/Home.jsx'));
+const Login = lazy(() => import('../Login/Login'));
 
 Modal.setAppElement('#root');
 
@@ -31,7 +31,7 @@ const App = () => {
         {isRefreshing ? <p className={css.refresh}>Refreshing user, please wait...</p> :
         <Suspense fallback={null}>
           <Routes>
-            <Route path='/' element={<HomePage />} />
+            <Route path='/' element={<Home />} />
             <Route
               path='/contacts'
               element={<PrivateRoute component={<Contacts/>} redirectTo='/login'/>} />
