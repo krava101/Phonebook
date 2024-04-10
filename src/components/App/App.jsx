@@ -7,7 +7,6 @@ import { PrivateRoute } from './PrivateRoute';
 import { refreshUser } from '../../redux/auth/operations.js';
 import LogoutModal from '../LogoutModal/LogoutModal';
 import Layout from '../Layout/Layout';
-import AppBar from '../AppBar/AppBar';
 import Modal from 'react-modal';
 import css from './App.module.css';
 
@@ -29,7 +28,6 @@ const App = () => {
   return (
     <>
       <Layout>
-        <AppBar/>
         {isRefreshing ? <p className={css.refresh}>Refreshing user, please wait...</p> :
         <Suspense fallback={null}>
           <Routes>
